@@ -1,10 +1,11 @@
-require('dotenv').config()
-const express = require('express')
-const bodyParser = require('body-parser')
-const pool = require('./queries.js')
-const db = require('./queries')
-const app = express()
-const port = 3000
+const config = require('dotenv').config(),
+express = require('express'),
+bodyParser = require('body-parser'),
+routes = require('./routes'),
+swaggerJsdoc = require("swagger-jsdoc"),
+swaggerUi = require("swagger-ui-express");
+
+const app = express();
 
 app.use(bodyParser.json())
 app.use(
@@ -13,12 +14,44 @@ app.use(
   })
 )
 
+routes(app);
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Code Academy Portfolio Project E-Commerce API",
+      version: "0.1.0",
+      description:
+        "This is simple E-Commerce API using the PERN stack",
+      license: {
+        name: "MIT",
+        url: "https://spdx.org/licenses/MIT.html",
+      },
+      contact: {
+        name: "Support",
+        url: "https://example.com",
+        email: "support@example.com",
+      },
+    },
+    servers: [
+      {
+        url: "http://localhost:3000",
+      },
+    ],
+  },
+  apis: ["./routes/*.js"],
+};
+
+const specs = swaggerJsdoc(options);
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs)
+);
+
+const port = process.env.API_PORT;
+
 app.listen(port, () => {
 	console.log(`App runnning on port ${port}.`)
 })
-
-app.get('/products', db.getProducts)
-app.get('/products/:id', db.getProductById)
-app.post('/products', db.createProduct)
-app.put('/products/:id', db.updateProduct)
-app.delete('/products/:id', db.deleteProduct)
