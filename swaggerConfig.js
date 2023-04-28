@@ -8,7 +8,7 @@ const options = {
       title: "Code Academy Portfolio Project E-Commerce API",
       version: "0.1.0",
       description:
-        "This is simple E-Commerce API using the PERN stack",
+        "This is simple E-Commerce API using the PEN stack",
       license: {
         name: "MIT",
         url: "https://spdx.org/licenses/MIT.html",

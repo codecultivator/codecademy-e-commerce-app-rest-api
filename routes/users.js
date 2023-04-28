@@ -20,7 +20,7 @@
  */
 
 const express = require('express');
-const db = require('../db/queries').users();
+const db = require('../db/queries').users;
 
 router = express.Router();
 

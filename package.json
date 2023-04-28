@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "initdb": "node ./db/init.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "foo": "echo \"Foo on you!\" && exit 1"
   },
   "repository": {
     "type": "git",

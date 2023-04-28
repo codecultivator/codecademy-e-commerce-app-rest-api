@@ -9,7 +9,7 @@
  *         - name
  *       properties:
  *         id:
- *           type: string
+ *           type: integer
  *           description: The auto-generated id of the product
  *         name:
  *           type: string
