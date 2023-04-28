@@ -2,9 +2,12 @@ const config = require('dotenv').config(),
 express = require('express'),
 bodyParser = require('body-parser'),
 routes = require('./routes'),
+session = require("express-session"),
+passport = require("passport"),
 swaggerConfig = require('./swaggerConfig');
 
 const app = express();
+app.set("trust proxy", 1);
 
 app.use(bodyParser.json())
 app.use(

@@ -2,7 +2,7 @@
  * @swagger
  * components:
  *   schemas:
- *     Product:
+ *     User:
  *       type: object
  *       required:
  *         - id
@@ -20,7 +20,7 @@
  */
 
 const express = require('express');
-const db = require('../db/queries').products;
+const db = require('../db/queries').users();
 
 router = express.Router();
 
